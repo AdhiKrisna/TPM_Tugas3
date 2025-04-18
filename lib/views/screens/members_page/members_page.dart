@@ -11,6 +11,7 @@ class MembersPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
+        title: const Text("Members"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -23,87 +24,86 @@ class MembersPage extends StatelessWidget {
                 style: BorderStyle.solid,
                 color: Colors.blueGrey,
               ),
-              color: Colors.grey.withValues(alpha: 0.3),
+              color: Colors.grey,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(
-                      top: 5, left: 20, right: 20, bottom: 20),
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: MediaQuery.of(context).size.height * 0.375,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        style: BorderStyle.solid,
-                        color: Colors.blueGrey,
-                      ),
-                      boxShadow: [
-                        BoxShadow(color: Colors.grey.withValues(alpha: 0.5)),
-                      ]),
-                  child: Column(
-                    children: [
-                      ClipOval(
-                        child: Image.asset(
-                           width: 200,
-                        height: 200,
-                          fit: BoxFit.cover,
-                          'assets/images/krisna.jpg',
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Made Vidyatma Adhi Krisna\n123220038',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+            child: SingleChildScrollView( 
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  _buildMemberCard(
+                    context,
+                    imagePath: 'assets/images/krisna.jpg',
+                    name: 'Made Vidyatma Adhi Krisna',
+                    nim: '123220038',
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                      top: 5, left: 20, right: 20, bottom: 20),
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: MediaQuery.of(context).size.height * 0.375,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        style: BorderStyle.solid,
-                        color: Colors.blueGrey,
-                      ),
-                      boxShadow: [
-                        BoxShadow(color: Colors.grey.withValues(alpha: 0.5)),
-                      ]),
-                  child: Column(
-                    children: [
-                      ClipOval(
-                        child: Image.asset(
-                        width: 200,
-                        height: 200,
-                          fit: BoxFit.fill,
-                          'assets/images/samudra.jpg',
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Samudera Heriyanto\n123220154',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                  _buildMemberCard(
+                    context,
+                    imagePath: 'assets/images/samudra.jpg',
+                    name: 'Samudera Heriyanto',
+                    nim: '123220154',
                   ),
-                ),
-                
-              ],
+                  _buildMemberCard(
+                    context,
+                    imagePath: 'assets/images/samudra.jpg',
+                    name: 'Nofan Zohrial',
+                    nim: '123220023',
+                  ),
+                  _buildMemberCard(
+                    context,
+                    imagePath: 'assets/images/samudra.jpg',
+                    name: 'Farid Radityo Suherman',
+                    nim: '123220094',
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildMemberCard(BuildContext context,
+      {required String imagePath, required String name, required String nim}) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.all(20),
+      width: MediaQuery.of(context).size.width * 0.8,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          style: BorderStyle.solid,
+          color: Colors.blueGrey,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+          ),
+        ],
+        color: Colors.white,
+      ),
+      child: Column(
+        children: [
+          ClipOval(
+            child: Image.asset(
+              imagePath,
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '$name\n$nim',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

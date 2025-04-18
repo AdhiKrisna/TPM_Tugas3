@@ -14,14 +14,14 @@ class RoutePages {
     GetPage(
       name: RouteName.login,
       page: () => LoginScreen(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: RouteName.mainScreen,
       page: () => MainScreen(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
 
     
@@ -29,32 +29,32 @@ class RoutePages {
     GetPage(
       name: RouteName.stopwatchPage,
       page: () => StopwatchScreen(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: RouteName.numberTypesPage,
       page: () => NumberTypesScreen(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: RouteName.trackingPage,
       page: () => TrackingScreen(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: RouteName.timeConverterPage,
-      page: () => const TimeConverterScreen(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000),
+      page: () =>  TimeConverterScreen(),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: RouteName.recommendationPage,
       page: () => const RecommendationScreen(),
-      transition: Transition.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000),
+      transition: Transition.cupertino,
+      transitionDuration: const Duration(milliseconds: 500),
     ),
     
   ];

@@ -16,7 +16,8 @@ class AuthController {
     String username = usernameController.text.trim();
     String password = passwordController.text.trim();
     if(username == "" || password == ""){
-      showSnackbar(context, 'Username dan Password tidak boleh kosong', Colors.red);
+      Get.snackbar("Login Failed", "Username and Password cannot be empty", snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red, colorText: Colors.white);
       return;
     }
     UserModel? user = await _dbHelper.loginUser(username, password);
@@ -25,10 +26,12 @@ class AuthController {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool('isLoggedIn', true);
       await prefs.setString('username', username);
-      showSnackbar(context, "Login Berhasil! Selamat Datang $username", Colors.green);
+      Get.snackbar("Login Success", "Welcome $username", snackPosition: SnackPosition.BOTTOM, 
+          backgroundColor: Colors.green, colorText: Colors.white);
       Get.offAllNamed(RouteName.mainScreen, arguments: username);
     } else {
-      showSnackbar(context, "Login Gagal! Kredential tidak valid", Colors.red);
+      Get.snackbar("Login Failed", "Invalid Username or Password", snackPosition: SnackPosition.BOTTOM, 
+          backgroundColor: Colors.red, colorText: Colors.white);
     }
   }
 
@@ -36,21 +39,25 @@ class AuthController {
     String username = usernameController.text.trim();
     String password = passwordController.text.trim();
     if(username.length < 6 || username == ""){
-      showSnackbar(context, 'Username minimal 6 karakter', Colors.red);
+      Get.snackbar("Register Failed", "Username should be at least 6 characters", snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red, colorText: Colors.white);
       return;
     }
     else if(password.length < 8 ){
-      showSnackbar(context, 'Password minimal 8 karakter', Colors.red);
+      Get.snackbar("Register Failed", "Password should be at least 8 characters", snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red, colorText: Colors.white);
       return;
     }
     UserModel? existingUser = await _dbHelper.getUserByUsername(username);
     if (existingUser != null) {
-      showSnackbar(context, 'Username sudah terdaftar', Colors.red);
+      Get.snackbar("Register Failed", "Username sudah terdaftar", snackPosition: SnackPosition.BOTTOM, 
+          backgroundColor: Colors.red, colorText: Colors.white);
       return;
     }
     UserModel user = UserModel(username: username, password: password);
     await _dbHelper.registerUser(user);
-    showSnackbar(context, "Register Berhasil!", Colors.green);
+    Get.snackbar("Register Success", "Account Created Successfully", snackPosition: SnackPosition.BOTTOM, 
+        backgroundColor: Colors.green, colorText: Colors.white);
     usernameController.clear();
     passwordController.clear();
   }
@@ -59,15 +66,9 @@ class AuthController {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
     Get.offAllNamed(RouteName.login);
-    showSnackbar(context, "Logout Berhasil!", Colors.green);
+    Get.snackbar("Logout Success", "Logout Successfully", snackPosition: SnackPosition.BOTTOM, 
+        backgroundColor: Colors.green, colorText: Colors.white);  
   }
 
-  void showSnackbar(BuildContext context, String message, Color color) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: color,
-      ),
-    );
-  }
+
 }

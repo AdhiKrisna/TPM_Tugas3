@@ -184,7 +184,9 @@ class MainPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _controller.goToTrackingPage();
+                      },
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -214,7 +216,9 @@ class MainPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _controller.goToTimeConverterPage();
+                      },
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -240,7 +244,9 @@ class MainPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _controller.goToRecommendationPage();
+                      },
                     ),
                   ),
                 ],

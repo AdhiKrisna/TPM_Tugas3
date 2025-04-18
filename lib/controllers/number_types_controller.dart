@@ -2,19 +2,21 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class NumberTypesController extends GetxController {
-  TextEditingController numberController = TextEditingController();
+  TextEditingController inputController = TextEditingController();
+  RxBool isChecked = false.obs;
 
-  var isInteger = false.obs;
-  var isPositive = false.obs;
-  var isNegative = false.obs;
-  var isDecimal = false.obs;
-  var isNatural = false.obs; 
-  var isPrimeNumber = false.obs;
-  var isValidInput = true.obs;
+
+  RxBool isInteger = false.obs;
+  RxBool isPositive = false.obs;
+  RxBool isNegative = false.obs;
+  RxBool isDecimal = false.obs;
+  RxBool isNatural = false.obs; 
+  RxBool isPrimeNumber = false.obs;
+  RxBool isValidInput = true.obs;
 
   void checkNumberTypes() {
-    final input = numberController.text;
-
+    final String input = inputController.text;
+    isChecked.value = true;
     double? number = double.tryParse(input);
 
     if (number == null) {

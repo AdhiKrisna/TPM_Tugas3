@@ -6,12 +6,14 @@ class TextFieldWidget extends StatefulWidget {
   final String hintText;
   final IconData prefixIcon;
   final bool isPass;
+  final bool isNumber;
   const TextFieldWidget({
     super.key,
     required this.controller,
     required this.hintText,
     required this.prefixIcon,
     this.isPass = false,
+    this.isNumber = false,
   });
 
   @override
@@ -24,7 +26,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   Widget build(BuildContext context) {
     return TextField(
       obscureText: isHide && widget.isPass,
-      keyboardType: TextInputType.text,
+      keyboardType:  widget.isNumber ? TextInputType.number : TextInputType.text,
       controller: widget.controller,
       style: TextStyle(
         fontSize: 18.0,
