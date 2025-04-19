@@ -6,10 +6,10 @@ class RouteName {
   static const String supportPage = '/supportPage';
 
   // main page features
-  static const String stopwatchPage = '/stopwatchPage';
-  static const String numberTypesPage = '/numberTypesPage';
-  static const String trackingPage = '/trackingPage';
-  static const String timeConverterPage = '/timeConverterPage';
-  static const String recommendationPage = '/recommendationPage';
+  static const String stopwatchScreen = '/stopwatchScreen';
+  static const String numberTypesScreen = '/numberTypesScreen';
+  static const String trackingScreen = '/trackingScreen';
+  static const String timeConverterScreen = '/timeConverterScreen';
+  static const String recommendationScreen = '/recommendationScreen';
 
 }

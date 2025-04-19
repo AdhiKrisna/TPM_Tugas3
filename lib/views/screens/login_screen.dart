@@ -5,7 +5,7 @@ import 'package:tugas3_tpm/views/widgets/text_field_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-  final AuthController authC = Get.put(AuthController());
+  final AuthController authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

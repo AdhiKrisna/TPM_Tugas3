@@ -123,7 +123,7 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        _controller.goToStopwatchPage();
+                        _controller.goToStopwatchScreen();
                       },
                     ),
                   ),
@@ -155,7 +155,7 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        _controller.goToNumberTypesPage();
+                        _controller.goToNumberTypesScreen();
                       },
                     ),
                   ),
@@ -187,7 +187,7 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        _controller.goToTrackingPage();
+                        _controller.goToTrackingScreen();
                       },
                     ),
                   ),
@@ -219,7 +219,7 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        _controller.goToTimeConverterPage();
+                        _controller.goToTimeConverterScreen();
                       },
                     ),
                   ),
@@ -247,7 +247,7 @@ class MainPage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        _controller.goToRecommendationPage();
+                        _controller.goToRecommendationScreen();
                       },
                     ),
                   ),

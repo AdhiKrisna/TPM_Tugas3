@@ -37,6 +37,8 @@ class SupportPage extends StatelessWidget {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Text(
+              'This is the main page of the application.\n'
+              'This page have a navigation bar at the bottom with an icon to navigate to the logout action.\n'
               'This page contains 5 main features displayed vertically:\n'
               '1. Stopwatch: Count up time with start and gonna be pause button when it started, reset button, and save button.\n'
               '2. Number Types: Display various number types like prime, decimal, integers (positive/negative), and whole numbers.\n'
@@ -54,7 +56,6 @@ class SupportPage extends StatelessWidget {
               '- 🏠 Home: Main features.\n'
               '- 👥 Members: Displays team member names and student IDs.\n'
               '- ❓ Help: Opens this guide.\n'
-              '- 🚪 Logout: Ends your session and logs you out.',
             ),
             SizedBox(height: 16),
 

@@ -24,7 +24,7 @@ class MembersPage extends StatelessWidget {
                 style: BorderStyle.solid,
                 color: Colors.blueGrey,
               ),
-              color: Colors.grey,
+              color: const Color.fromARGB(255, 50, 131, 181),
               borderRadius: BorderRadius.circular(20),
             ),
             child: SingleChildScrollView( 
@@ -45,13 +45,13 @@ class MembersPage extends StatelessWidget {
                   ),
                   _buildMemberCard(
                     context,
-                    imagePath: 'assets/images/samudra.jpg',
+                    imagePath: 'assets/images/nofan.jpg',
                     name: 'Nofan Zohrial',
                     nim: '123220023',
                   ),
                   _buildMemberCard(
                     context,
-                    imagePath: 'assets/images/samudra.jpg',
+                    imagePath: 'assets/images/farid.jpg',
                     name: 'Farid Radityo Suherman',
                     nim: '123220094',
                   ),
@@ -75,7 +75,7 @@ class MembersPage extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           style: BorderStyle.solid,
-          color: Colors.blueGrey,
+          color: const Color.fromARGB(255, 38, 163, 225),
         ),
         boxShadow: [
           BoxShadow(

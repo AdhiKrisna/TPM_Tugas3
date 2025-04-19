@@ -4,7 +4,7 @@ import 'package:tugas3_tpm/controllers/main_screen_controller.dart';
 
 class MainScreen extends StatelessWidget {
    MainScreen({super.key});
-  final mainScreenC = Get.put(MainScreenController());
+  final mainScreenC = Get.find<MainScreenController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

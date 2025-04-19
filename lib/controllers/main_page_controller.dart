@@ -3,19 +3,19 @@ import 'package:tugas3_tpm/routes/route_name.dart';
 
 class MainPageController {
 
-  void goToStopwatchPage() {
-    Get.toNamed(RouteName.stopwatchPage);
+  void goToStopwatchScreen() {
+    Get.toNamed(RouteName.stopwatchScreen);
   }
-  void goToNumberTypesPage() {
-    Get.toNamed(RouteName.numberTypesPage);
+  void goToTrackingScreen() {
+    Get.toNamed(RouteName.trackingScreen);
   }
-  void goToTrackingPage() {
-    Get.toNamed(RouteName.trackingPage);
+  void goToNumberTypesScreen() {
+    Get.toNamed(RouteName.numberTypesScreen);
   }
-  void goToTimeConverterPage() {
-    Get.toNamed(RouteName.timeConverterPage);
+  void goToTimeConverterScreen() {
+    Get.toNamed(RouteName.timeConverterScreen);
   }
-  void goToRecommendationPage() {
-    Get.toNamed(RouteName.recommendationPage);
+  void goToRecommendationScreen() {
+    Get.toNamed(RouteName.recommendationScreen);
   }
 }
