@@ -5,7 +5,7 @@ import 'package:tugas3_tpm/views/widgets/text_field_widget.dart';
 
 class TimeConverterScreen extends StatelessWidget {
   TimeConverterScreen({super.key});
-  final _controller = Get.put(TimeConverterController());
+  final _controller = Get.find<TimeConverterController>();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class TimeConverterScreen extends StatelessWidget {
                 ),
               ),
               Obx(()=>
-                _controller.isChecked.value
+                _controller.isChecked.isTrue
                     ? Column(
                         children: [
                           if (_controller.isValidInput.isFalse) const Text(

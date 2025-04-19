@@ -1,67 +1,13 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:get/get.dart';
+import 'package:tugas3_tpm/controllers/stopwatch_controller.dart';
 
-class StopwatchScreen extends StatefulWidget {
+class StopwatchScreen extends StatelessWidget {
   const StopwatchScreen({super.key});
 
   @override
-  State<StopwatchScreen> createState() => _StopwatchScreenState();
-}
-
-class _StopwatchScreenState extends State<StopwatchScreen> {
-  late Stopwatch _stopwatch;
-  late Timer _timer;
-
-  String _formattedTime = "00:00:00";
-
-  @override
-  void initState() {
-    super.initState();
-    _stopwatch = Stopwatch();
-    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      if (_stopwatch.isRunning) {
-        setState(() {
-          _formattedTime = _formatTime(_stopwatch.elapsed);
-        });
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  String _formatTime(Duration duration) {
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final hours = twoDigits(duration.inHours);
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-    return "$hours:$minutes:$seconds";
-  }
-
-  void _startStopwatch() {
-    setState(() {
-      _stopwatch.start();
-    });
-  }
-
-  void _stopStopwatch() {
-    setState(() {
-      _stopwatch.stop();
-    });
-  }
-
-  void _resetStopwatch() {
-    setState(() {
-      _stopwatch.reset();
-      _formattedTime = "00:00:00";
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.find<StopwatchController>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Stopwatch'),
@@ -71,35 +17,138 @@ class _StopwatchScreenState extends State<StopwatchScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                _formattedTime,
-                style: const TextStyle(
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold,
+          child: Obx(
+            () => Column(
+              mainAxisAlignment:
+                  controller.isSaved.isTrue
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.center,
+              children: [
+                Obx(
+                  () => Text(
+                    controller.formattedTime,
+                    style: const TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: _startStopwatch,
-                    child: const Text('Start'),
-                  ),
-                  ElevatedButton(
-                    onPressed: _stopStopwatch,
-                    child: const Text('Stop'),
-                  ),
-                  ElevatedButton(
-                    onPressed: _resetStopwatch,
-                    child: const Text('Reset'),
-                  ),
-                ],
-              ),
-            ],
+                controller.isSaved.isFalse
+                    ? SizedBox(height: 40)
+                    : const SizedBox(height: 10),
+                Row(
+                  spacing: 20,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.blue,
+                      ),
+                      child: Obx(
+                        () => IconButton(
+                          icon:
+                              controller.isRunning.isFalse
+                                  ? Icon(
+                                    Icons.play_arrow,
+                                    color: Colors.white,
+                                    size: 32,
+                                  )
+                                  : Icon(
+                                    Icons.pause,
+                                    color: Colors.white,
+                                    size: 32,
+                                  ),
+                          onPressed:
+                              controller.isRunning.isFalse
+                                  ? controller.start
+                                  : controller.stop,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.blue,
+                      ),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.clear,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                        onPressed: controller.reset,
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.blue,
+                      ),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.save,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                        onPressed: controller.saveTime,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                controller.isSaved.isTrue
+                    ? Expanded(
+                      child: ListView.builder(
+                        itemExtent: 75,
+                        shrinkWrap: true,
+                        itemCount: controller.savedTimes.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            leading: Container(
+                              padding: const EdgeInsets.all(4),
+                              width: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Colors.blue,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '${index + 1}',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.delete),
+                              onPressed: () {
+                                controller.savedTimes.removeAt(index);
+                                if (controller.savedTimes.isEmpty) {
+                                  controller.isSaved.value = false;
+                                }
+                              },
+                            ),
+                            title: Text(
+                              controller.savedTimes[index],
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                    : const SizedBox(),
+              ],
+            ),
           ),
         ),
       ),

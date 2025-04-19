@@ -5,7 +5,7 @@ import 'package:tugas3_tpm/views/widgets/text_field_widget.dart';
 
 class NumberTypesScreen extends StatelessWidget {
   NumberTypesScreen({super.key});
-  final NumberTypesController _controller = NumberTypesController();
+  final  _controller = Get.find<NumberTypesController>();
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:tugas3_tpm/controllers/number_types_controller.dart';
+import 'package:tugas3_tpm/controllers/stopwatch_controller.dart';
+import 'package:tugas3_tpm/controllers/time_converter_controller.dart';
 import 'package:tugas3_tpm/routes/route_name.dart';
 import 'package:tugas3_tpm/views/screens/login_screen.dart';
 import 'package:tugas3_tpm/views/screens/main_page/features/number_types_screen.dart';
@@ -29,12 +32,18 @@ class RoutePages {
     GetPage(
       name: RouteName.stopwatchPage,
       page: () => StopwatchScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => StopwatchController());
+      }),
       transition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 500),
     ),
     GetPage(
       name: RouteName.numberTypesPage,
       page: () => NumberTypesScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => NumberTypesController());
+      }),
       transition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 500),
     ),
@@ -47,6 +56,9 @@ class RoutePages {
     GetPage(
       name: RouteName.timeConverterPage,
       page: () =>  TimeConverterScreen(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut(() => TimeConverterController());
+      }),
       transition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 500),
     ),

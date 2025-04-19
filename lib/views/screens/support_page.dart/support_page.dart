@@ -38,7 +38,7 @@ class SupportPage extends StatelessWidget {
             ),
             Text(
               'This page contains 5 main features displayed vertically:\n'
-              '1. Stopwatch: Count up time with start, stop, and reset options.\n'
+              '1. Stopwatch: Count up time with start and gonna be pause button when it started, reset button, and save button.\n'
               '2. Number Types: Display various number types like prime, decimal, integers (positive/negative), and whole numbers.\n'
               '3. Location Tracking: Shows your current location in real-time.\n'
               '4. Time Converter: Convert years to hours, minutes, and seconds.\n'

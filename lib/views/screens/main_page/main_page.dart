@@ -7,7 +7,7 @@ import 'package:tugas3_tpm/controllers/main_page_controller.dart';
 
 class MainPage extends StatelessWidget {
    MainPage({super.key});
-  final MainPageController _controller = MainPageController();
+  final  _controller = Get.put(MainPageController());
   Future<String> _getUsernameFromArgsOrPrefs(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     final arg = Get.arguments;
@@ -122,7 +122,9 @@ class MainPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        _controller.goToStopwatchPage();
+                      },
                     ),
                   ),
                   const SizedBox(height: 10),
