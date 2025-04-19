@@ -28,7 +28,7 @@ class RecommendationController extends GetxController {
         RecommendationModel(
           siteName: "W3Schools",
           siteUrl: "https://www.w3schools.com",
-          imagePath: 'assets/images/logo/w3schools.png',
+          imagePath: 'assets/images/logo/w3school.png',
           description: "Tutorial dasar HTML, CSS, JavaScript, dan lainnya.",
         ),
         RecommendationModel(
